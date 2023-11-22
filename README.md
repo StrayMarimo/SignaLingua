@@ -1,6 +1,6 @@
 # Signa Lingua
 
-Signa Lingua is a mobile application that translates Filipino sign language into text that will be developed to assist people who have hearing impairment and uses FSL to communicate with other people. The application will be able to recognize different hand gestures and facial expressions used in Filipino sign language and translate them in real time.
+Signa Lingua is an application that translates Filipino sign language into text. This will be developed to assist people who have hearing impairment and use FSL to communicate with other people. The application will be able to recognize different hand gestures and facial expressions used in Filipino sign language and translate them in real-time.
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![MediaPipe](https://img.shields.io/badge/MediaPipe-teal)
