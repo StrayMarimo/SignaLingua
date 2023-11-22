@@ -33,14 +33,15 @@ Signa Lingua is a mobile application that translates Filipino sign language into
 ### Client Side
 
 **Run Node**  
-``` cd src ```  
+```cd signa-lingua ```  
 ```npm run dev```
 
 **Serve Client**  
-``` cd src ```  
+```cd signa-lingua ```  
 ```php artisan serve```
 
-### Server side
-``` uvicorn main:app --reload ```
+### Server side  
+```cd api```  
+```uvicorn main:app --reload ```
 
 © 2023. POLLUX. All Rights Reserved.
