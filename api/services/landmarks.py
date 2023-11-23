@@ -39,6 +39,7 @@ async def generate_frames():
     cap = cv2.VideoCapture(0)
     with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
         global stream_flag 
+        stream_flag = True
         print("stream_flag: ", stream_flag)
         while True:
             ret, frame = cap.read()
@@ -60,6 +61,7 @@ async def generate_frames():
                 b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n\r\n')
             
             if stream_flag == False:
+                stream_flag = True
                 break
 
             await asyncio.sleep(0.1)
@@ -70,3 +72,4 @@ def stop_feed():
     global stream_flag
     stream_flag = False
     cv2.destroyAllWindows()
+    return {"message": "Video feed stopped"}
