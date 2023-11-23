@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CameraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,19 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome');});
 
-Route::view('/camera', 'camera')->name('camera');
+Route::get('/camera', [CameraController::class, 'index'])->name('camera');
 
 Route::post('/stop-video', function () {
     
-    $fastApiUrl = 'http://localhost:8001/stop_video_feed';
-
-    // Send the POST request using Laravel HTTP client
+    $fastApiUrl = fastapi_url('stop_video_feed');
     $response = Http::post($fastApiUrl);
-
-    // Handle the response
     return $response->json(); // or return other data as needed
 });
