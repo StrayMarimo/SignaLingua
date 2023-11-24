@@ -11,9 +11,9 @@
 
     <title>{{ config('app.name', 'Signa Lingua') }}</title>
 
-    {{-- Vite --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -28,3 +28,4 @@
 @stack('script')
 
 </html>
+

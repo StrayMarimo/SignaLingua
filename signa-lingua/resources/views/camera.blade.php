@@ -1,9 +1,18 @@
 @extends('layouts.app')
 @section('content')
-    <div>
-        <h1>Camera Feed</h1>
-        <img id="camera-feed" alt="Camera Feed" data-video-feed-url="{{ $videoFeedUrl }}">
-        <button id="camera-btn">Start Camera</button>
+
+<section id="demos" class="invisible">
+  <div id="liveView" class="videoView">
+    <button id="webcamButton" class="mdc-button mdc-button--raised">
+      <span class="mdc-button__ripple"></span>
+      <span class="mdc-button__label">Open Camera</span>
+    </button>
+    <div style="position: relative;">
+      <video id="webcam" autoplay playsinline></video>
+      <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
     </div>
-   
+  </div>
+</section>
+<script type="module" src="js/camera_phone.js"></script>
+
 @endsection

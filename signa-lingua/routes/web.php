@@ -14,13 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('welcome');});
-
-Route::get('/camera', [CameraController::class, 'index'])->name('camera');
-
-Route::post('/stop-video', function () {
-    
-    $fastApiUrl = fastapi_url('stop_video_feed');
-    $response = Http::post($fastApiUrl);
-    return $response->json(); // or return other data as needed
-});
+Route::view('/camera', 'camera')->name('camera');
