@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Controllers\CameraController;
 use Illuminate\Support\Facades\Route;
 
 /*

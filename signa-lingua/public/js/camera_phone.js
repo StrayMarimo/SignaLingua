@@ -2,12 +2,10 @@ import {
     HandLandmarker,
     FaceLandmarker,
     FilesetResolver,
-    DrawingUtils
+    DrawingUtils,
 } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
-import
-{
-    PoseLandmarker
-} from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
+
+import { PoseLandmarker } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
 
 const demosSection = document.getElementById("demos");
 let faceLandmarker;
@@ -39,16 +37,15 @@ const createGestureRecognizer = async () => {
         runningMode: "VIDEO",
         numPoses: 2,
     });
-        faceLandmarker = await FaceLandmarker.createFromOptions(vision, {
-            baseOptions: {
-                modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
-                delegate: "GPU",
-            },
+    faceLandmarker = await FaceLandmarker.createFromOptions(vision, {
+        baseOptions: {
+            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
+            delegate: "GPU",
+        },
         outputFaceBlendshapes: true,
         runningMode: "VIDEO",
         numFaces: 1,
-            }
-        );
+    });
     demosSection.classList.remove("invisible");
 };
 createGestureRecognizer();
@@ -82,7 +79,6 @@ function enableCam(event) {
     } else {
         webcamRunning = true;
         enableWebcamButton.innerText = "Close camera";
-
     }
 
     // Activate the webcam stream.
@@ -90,16 +86,22 @@ function enableCam(event) {
         video.srcObject = stream;
         if (webcamRunning === true)
             video.addEventListener("loadeddata", predictWebcam);
-        else
+        else {
+            console.log("Stopping camera");
             stream.getTracks().forEach(function (track) {
                 track.stop();
             });
+        }  
     });
 }
+
+const getLandmarksOrNull = (array) =>
+    array && array.length > 0 ? array[0] : [];
 let lastVideoTime = -1;
 let results_hand = undefined;
 let results_pose = undefined;
 let results_face = undefined;
+
 async function predictWebcam() {
     const webcamElement = document.getElementById("webcam");
     let nowInMs = Date.now();
@@ -117,6 +119,7 @@ async function predictWebcam() {
     canvasElement.style.width = videoWidth;
     webcamElement.style.width = videoWidth;
     if (results_hand.landmarks) {
+        // console.log(results_hand.landmarks);
         for (const landmarks of results_hand.landmarks) {
             drawingUtils.drawConnectors(
                 landmarks,
@@ -133,6 +136,7 @@ async function predictWebcam() {
         }
     }
     if (results_pose.landmarks) {
+        // console.log(results_pose.landmarks);
         for (const landmarks of results_pose.landmarks) {
             drawingUtils.drawConnectors(
                 landmarks,
@@ -150,6 +154,7 @@ async function predictWebcam() {
     }
 
     if (results_face.faceLandmarks) {
+        // console.log(results_face.faceLandmarks);
         for (const landmarks of results_face.faceLandmarks) {
             drawingUtils.drawConnectors(
                 landmarks,
@@ -198,7 +203,22 @@ async function predictWebcam() {
             );
         }
     }
-    
+
+    const requestBody = {
+        hand: getLandmarksOrNull(results_hand.landmarks),
+        pose: getLandmarksOrNull(results_pose.landmarks),
+        face: getLandmarksOrNull(results_face.faceLandmarks),
+    };
+    await fetch("http://192.168.100.43:8001/process_string", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+    });
+
+    await new Promise((resolve) => setTimeout(resolve, 100)); // S
+
     canvasCtx.restore();
     // Call this function again to keep predicting when the browser is ready.
     if (webcamRunning === true) {
