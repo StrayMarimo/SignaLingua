@@ -14,7 +14,7 @@ Signa Lingua is an application that translates Filipino sign language into text.
 #### Frontend Team:
 
 - [**Camela Kim P. Quidip**](https://github.com/geumjassi)
-- [**Blademhir U. Ferrer**]()
+- [**Blademhir U. Ferrer**](https://github.com/blade-mhir)
 
 #### Backend Team:
 
