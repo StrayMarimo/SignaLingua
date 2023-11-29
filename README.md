@@ -23,7 +23,9 @@ Signa Lingua is an application that translates Filipino sign language into text.
 
 # Installation
 ### Client Side
-```npm i```
+```npm i```  
+```composer install```  
+```cp .env.example .env```  
 
 ### Server Side
 ```pip install requirements.txt```
