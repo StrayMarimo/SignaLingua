@@ -11,6 +11,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@mediapipe/tasks-vision": "^0.10.0"
+        "@mediapipe/tasks-vision": "^0.10.0",
+        "@vitejs/plugin-basic-ssl": "^1.0.2"
     }
 }
