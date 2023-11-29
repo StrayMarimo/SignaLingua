@@ -91,7 +91,7 @@ function enableCam(event) {
             stream.getTracks().forEach(function (track) {
                 track.stop();
             });
-        }  
+        }
     });
 }
 
@@ -209,7 +209,7 @@ async function predictWebcam() {
         pose: getLandmarksOrNull(results_pose.landmarks),
         face: getLandmarksOrNull(results_face.faceLandmarks),
     };
-    await fetch("http://192.168.100.43:8001/process_string", {
+    await fetch("http://localhost:8001/process_string", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
