@@ -13,8 +13,8 @@ let handLandmarker;
 let poseLandmarker;
 let enableWebcamButton;
 let webcamRunning = false;
-const videoHeight = "360px";
-const videoWidth = "480px";
+const videoHeight = "240px";
+const videoWidth = "320px";
 
 const createGestureRecognizer = async () => {
     const vision = await FilesetResolver.forVisionTasks(
@@ -209,7 +209,11 @@ async function predictWebcam() {
         pose: getLandmarksOrNull(results_pose.landmarks),
         face: getLandmarksOrNull(results_face.faceLandmarks),
     };
+<<<<<<< Updated upstream
     await fetch("http://localhost:8001/process_string", {
+=======
+    await fetch("http://172.28.64.1:8000/process_string", {
+>>>>>>> Stashed changes
         method: "POST",
         headers: {
             "Content-Type": "application/json",
