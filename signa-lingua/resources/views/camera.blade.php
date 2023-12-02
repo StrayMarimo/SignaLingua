@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content') 
 
+<h1 class="text-red-500">HEllo</h1>
 <!-- <section id="demos" class="invisible">
   <div id="liveView" class="videoView">
     <button id="webcamButton" class="mdc-button mdc-button--raised">
