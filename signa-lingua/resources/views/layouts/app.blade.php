@@ -18,10 +18,11 @@
 
 </head>
 <body>
-    <div class="w-full sm:w-[450px] h-full bg-[#FEFEFE] m-auto p-0 relative sm:border-x">
+    <div class="w-full sm:w-[450px] h-full bg-[#FEFEFE] m-auto p-0 sm:border-x">
         <main>
             @yield('content')
         </main>
+        <x-camera-button />
     </div>
 </body>
 @yield('javascript')
