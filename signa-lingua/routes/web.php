@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'splash')->name('splash');
+Route::view('/home', 'home')->name('home');
+Route::view('/categories', 'categories')->name('categories');
 Route::view('/camera', 'camera')->name('camera');

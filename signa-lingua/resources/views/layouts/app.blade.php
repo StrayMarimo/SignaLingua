@@ -13,12 +13,12 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+
     @vite(['resources/css/app.css','resources/js/app.js'])
 
 </head>
 <body>
-    <div class="w-full sm:w-[500px] h-full bg-[#FDFDFD] m-auto p-0 relative">
+    <div class="w-full sm:w-[450px] h-full bg-[#FEFEFE] m-auto p-0 relative sm:border-x">
         <main>
             @yield('content')
         </main>

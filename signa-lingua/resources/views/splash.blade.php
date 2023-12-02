@@ -12,7 +12,7 @@
 <script>
     $(document).ready(function() {
         $('#splash-screen').fadeIn().delay(1000).fadeOut(function() {
-            window.location = '/camera'; // Replace with your destination URL
+            window.location = '/home'; // Replace with your destination URL
         });
     });
 </script>
