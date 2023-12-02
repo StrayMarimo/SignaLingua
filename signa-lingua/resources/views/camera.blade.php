@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content') 
 
-<h1 class="text-red-500">HEllo</h1>
-<!-- <section id="demos" class="invisible">
+<section id="demos" class="invisible">
   <div id="liveView" class="videoView">
     <button id="webcamButton" class="mdc-button mdc-button--raised">
       <span class="mdc-button__ripple"></span>
@@ -16,7 +15,7 @@
 
 
   </div>
-</section> -->
-<!-- <script type="module" src="js/camera_phone.js"></script>
+</section>
+<script type="module" src="js/camera_phone.js"></script>
 
 @endsection
