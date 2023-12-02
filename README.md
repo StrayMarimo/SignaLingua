@@ -30,6 +30,12 @@ Signa Lingua is an application that translates Filipino sign language into text.
 ### Server Side
 ```pip install requirements.txt```
 
+### Laravel valet
+```composer global require laravel/valet```
+```valet install```
+
+
+
 
 # Usage
 ### Client Side
@@ -42,10 +48,28 @@ Signa Lingua is an application that translates Filipino sign language into text.
 ```cd signa-lingua ```  
 ```php artisan serve```
 
-client is running at https://127.0.0.1:5173
-
 ### Server side  
 ```cd api```  
 ```uvicorn main:app --reload --port 8001```
+
+
+### Run using laravel valet
+```cd signa-lingua ```  
+```npm run dev```  
+
+
+on a new terminal:   
+```./valet.sh```  
+
+share site:  
+```valet share-tool ngrok```  
+```valet set-ngrok-token YOUR_TOKEN_HERE // creat account from ngrok.com```  
+```valet share```  
+
+
+
+
+
+
 
 © 2023. POLLUX. All Rights Reserved.
