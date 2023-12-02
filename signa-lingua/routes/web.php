@@ -12,4 +12,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/', 'splash')->name('splash');
 Route::view('/camera', 'camera')->name('camera');

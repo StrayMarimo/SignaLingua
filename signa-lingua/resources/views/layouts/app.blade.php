@@ -8,18 +8,17 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Signa Lingua') }}</title>
 
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
     @vite(['resources/css/app.css','resources/js/app.js'])
 
 </head>
 <body>
-    <div id="app">
+    <div class="w-full sm:w-[500px] h-full bg-[#FDFDFD] m-auto p-0 relative">
         <main>
             @yield('content')
         </main>
@@ -27,6 +26,5 @@
 </body>
 @yield('javascript')
 @stack('script')
-
 </html>
 
