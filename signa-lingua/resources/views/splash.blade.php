@@ -4,7 +4,7 @@
 <div id="splash-screen" class="w-full flex items-center justify-center h-screen">
     <div>
         <img src="{{ asset('assets/images/logo.png') }}" class="m-auto" alt="logo">
-        <h1 class="text-center mt-8 font-black text-[24px] text-[#3CA79B]">Signa Lingua</h1>
+        <h1 class="text-center mt-8 font-black text-[24px] text-[#004066]">Signa Lingua</h1>
     </div>
 </div>
 

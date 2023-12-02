@@ -22,7 +22,9 @@
         <main>
             @yield('content')
         </main>
-        <x-camera-button />
+        @if (Request::path() != '/')
+            <x-camera-button />
+        @endif
     </div>
 </body>
 @yield('javascript')

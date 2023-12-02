@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class SideBarToggleButton extends Component
+class TopBar extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class SideBarToggleButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.side-bar-toggle-button');
+        return view('components.top-bar');
     }
 }
