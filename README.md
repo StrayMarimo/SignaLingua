@@ -50,7 +50,7 @@ Signa Lingua is an application that translates Filipino sign language into text.
 
 ### Server side  
 ```cd api```  
-```uvicorn main:app --reload --port 8001```
+```uvicorn main:app --reload --port 8001 --host 0.0.0.0 ``
 
 
 ### Run using laravel valet
