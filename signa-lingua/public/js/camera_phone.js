@@ -229,7 +229,7 @@ async function predictWebcam() {
         pose: getLandmarksOrNull(results_pose.landmarks),
         face: getLandmarksOrNull(results_face.faceLandmarks),
     };
-    await fetch("https://0.0.0.0:8001/process_string", {
+    await fetch("http://0.0.0.0:8001/process_string", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
