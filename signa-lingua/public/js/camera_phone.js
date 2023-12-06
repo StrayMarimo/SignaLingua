@@ -224,8 +224,20 @@ async function predictWebcam() {
         }
     }
 
+    let hand1 = [], hand2 = [];
+
+    if (results_hand.landmarks.length == 2) {
+        hand1 = results_hand.landmarks[0];
+        hand2 = results_hand.landmarks[1];
+    } 
+    
+    if (results_hand.landmarks.length == 1) {
+        hand1 = getLandmarksOrNull(results_hand.landmarks)
+    }
+
     const requestBody = {
-        hand: getLandmarksOrNull(results_hand.landmarks),
+        hand1: hand1,
+        hand2: hand2,
         pose: getLandmarksOrNull(results_pose.landmarks),
         face: getLandmarksOrNull(results_face.faceLandmarks),
     };
