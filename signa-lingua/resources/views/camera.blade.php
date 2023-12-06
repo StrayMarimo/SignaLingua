@@ -17,7 +17,7 @@
         <div class="text-center">
           <h2>Translation:</h2>
           <div class="w-[90%] mx-auto p-10">
-            <small>Translation goes here..</small>
+            <small id="action"></small>
           </div>
           </div>
         </div>
