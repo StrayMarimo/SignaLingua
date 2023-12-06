@@ -7,6 +7,7 @@ class Landmark(BaseModel):
     z: float
 
 class LandmarksData(BaseModel):
-    hand: Optional[List[Landmark]]
+    hand1: Optional[List[Landmark]]
+    hand2: Optional[List[Landmark]]
     pose: Optional[List[Landmark]]
     face: Optional[List[Landmark]]
