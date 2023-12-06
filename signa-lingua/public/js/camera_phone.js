@@ -13,6 +13,7 @@ let handLandmarker;
 let poseLandmarker;
 let enableWebcamButton;
 let webcamRunning = false;
+let sequences = [];
 const videoHeight = "240px";
 const videoWidth = "320px";
 
@@ -31,7 +32,7 @@ const createGestureRecognizer = async () => {
     demosSection.classList.remove("invisible");
     poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
         baseOptions: {
-            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task`,
+            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task`,
             delegate: "GPU",
         },
         runningMode: "VIDEO",
@@ -235,19 +236,74 @@ async function predictWebcam() {
         hand1 = getLandmarksOrNull(results_hand.landmarks)
     }
 
-    const requestBody = {
+
+    async function processLandmarks(requestBody) {
+        const { hand1, hand2, pose, face } = requestBody;
+        const flattenLandmarks = (landmarks) =>
+            landmarks
+                ? landmarks.flatMap((res) => [res.x, res.y, res.z])
+                : Array(21 * 3).fill(0);
+
+        const poseArray = pose
+            ? pose.flatMap((res) => [res.x, res.y, res.z, 1])
+            : Array(33 * 4).fill(0);
+
+        const faceArray = face
+            ? flattenLandmarks(face)
+            : Array(478 * 3).fill(0);
+        const lhArray = hand1.length > 0 ? flattenLandmarks(hand1) : Array(21 * 3).fill(0);
+        const rhArray = hand2.length > 0 ? flattenLandmarks(hand2) : Array(21 * 3).fill(0);
+        const concatenatedArray = [
+            ...poseArray,
+            ...faceArray,
+            ...lhArray,
+            ...rhArray,
+        ];
+        return concatenatedArray;
+    }
+
+    // console.log("Face:", results_pose.landmarks)
+    const landmarks = {
         hand1: hand1,
         hand2: hand2,
         pose: getLandmarksOrNull(results_pose.landmarks),
         face: getLandmarksOrNull(results_face.faceLandmarks),
     };
-    await fetch("http://0.0.0.0:8001/process_string", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-    });
+
+    sequences.push(await processLandmarks(landmarks));
+    console.log(`Sequences: ${sequences[0].length}`);
+
+    if (sequences.length == 30) {
+        console.log("Sending sequences: ", sequences);
+        try {
+            const response = await fetch(
+                "http://0.0.0.0:8001/process_sequences",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(sequences),
+                }
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Response:", data);
+
+                const action = document.getElementById("action");
+                action.innerText = data.action;
+            } else {
+                console.error("Error:", response.status, response.statusText);
+            }
+
+            // Clear the sequences array
+            sequences = [];
+        } catch (error) {
+            console.error("Fetch error:", error);
+        }
+        sequences = [];
+    }
 
     await new Promise((resolve) => setTimeout(resolve, 100)); // S
 
