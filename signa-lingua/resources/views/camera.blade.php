@@ -25,6 +25,6 @@
     </div>
   </div>
 </section>
-<script type="module" src="js/camera_phone.js"></script>
+<script type="module" src="js/camera.js"></script>
 
 @endsection
