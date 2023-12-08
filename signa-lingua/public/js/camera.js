@@ -14,6 +14,7 @@ let webcamRunning = false;
 let sequences = [];
 const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas");
+const action = document.getElementById("action");
 const canvasCtx = canvasElement.getContext("2d");
 
 
@@ -40,10 +41,15 @@ function enableCam(event) {
     }
     if (webcamRunning === true) {
         webcamRunning = false;
-        enableWebcamButton.innerText = "Open camera";
+        outerCircle.setAttribute("stroke", "#004066");
+        innerCircle.setAttribute("fill", "#004066");
+        action.value = "";
+        action.placeholder = "Start translating...";
+
     } else {
         webcamRunning = true;
-        enableWebcamButton.innerText = "Close camera";
+        outerCircle.setAttribute("stroke", "red");
+        innerCircle.setAttribute("fill", "red");
     }
 
     // Activate the webcam stream.
@@ -59,8 +65,6 @@ function enableCam(event) {
         }
     });
 }
-
-const getLandmarksOrNull = (array) => array && array.length > 0 ? array[0] : [];
 let lastVideoTime = -1;
 let results_hand = undefined;
 let results_pose = undefined;
@@ -104,9 +108,7 @@ async function predictWebcam() {
 
             if (response.ok) {
                 const data = await response.json();
-
-                const action = document.getElementById("action");
-                action.innerText = data.action;
+                action.value = data.action;
             } else {
                 console.error("Error:", response.status, response.statusText);
             }

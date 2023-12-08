@@ -9,7 +9,7 @@ import { PoseLandmarker } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@
 const canvasElement = document.getElementById("output_canvas");
 const canvasCtx = canvasElement.getContext("2d");
 const videoHeight = "240px";
-const videoWidth = "320px";
+const videoWidth = "303px";
 
 canvasCtx.save();
 canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);

@@ -22,7 +22,7 @@
         <main>
             @yield('content')
         </main>
-        @if (Request::path() != '/')
+        @if (Request::path() != '/' && Request::path() != 'camera')
             <x-camera-button />
         @endif
     </div>
