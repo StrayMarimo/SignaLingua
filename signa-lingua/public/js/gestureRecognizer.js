@@ -11,9 +11,6 @@ export let handLandmarker;
 export let faceLandmarker;
 export let poseLandmarker;
 
-
-// gestureRecognizer.js
-
 export const createGestureRecognizer = async () => {
 
 
@@ -52,6 +49,4 @@ export const createGestureRecognizer = async () => {
     demosSection.classList.remove("invisible");
 
 };
-
-// export { createGestureRecognizer };
 
