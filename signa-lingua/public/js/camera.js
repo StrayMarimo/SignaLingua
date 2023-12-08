@@ -110,8 +110,8 @@ async function predictWebcam() {
             } else {
                 console.error("Error:", response.status, response.statusText);
             }
-
-            // Clear the sequences array
+            
+            // remove first element
             sequences.shift();
         } catch (error) {
             console.error("Fetch error:", error);
@@ -121,7 +121,7 @@ async function predictWebcam() {
     await new Promise((resolve) => setTimeout(resolve, 100)); // S
 
     canvasCtx.restore();
-    // Call this function again to keep predicting when the browser is ready.
+    // keep predicting when webcam is running.
     if (webcamRunning === true) {
         window.requestAnimationFrame(predictWebcam);
     } else {
