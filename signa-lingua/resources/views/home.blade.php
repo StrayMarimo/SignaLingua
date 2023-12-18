@@ -42,9 +42,22 @@
         </button>
     </div>
     <p class="text-[#004066] mb-4 font-semibold">Additional resources</p>
-    @for ($i = 0; $i < 3; $i++)
-        <x-resources-card />
-    @endfor
+    <div class="w-full bg-white h-full mb-5 rounded-xl border">
+    
+    <iframe class="w-full" height="315" src="https://www.youtube.com/embed/iom4x_bn2MI?si=sKPbtxcuHSBiaiKH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="border-t max-w-full rounded-b-xl p-4">      
+        <p class="font-bold text-lg text-[#004066]">Basic Filipino Greetings</p>
+        <p class="text-[#4f5c64]">The series is produced by the OSDS to introduce FSL as one of the communication options for the deaf and hard-of-hearing students who are also part of the UP community. The OSDS also hopes that the series will spark interest among UP students to learn more about FSL. </p>
+    </div>
+    </div>
+    <div class="w-full bg-white h-full mb-5 rounded-xl border">
+    
+    <iframe class="w-full" height="315" src="https://www.youtube.com/embed/UytbjabYX_8?si=h1R_7z_CDUc_YUXj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="border-t max-w-full rounded-b-xl p-4">      
+        <p class="font-bold text-lg text-[#004066]">Learn Basic Phrases in Filipino Sign Language</p>
+        <p class="text-[#4f5c64]">Break the ice with a Deaf friend with these basic phrases in Filipino Sign Language (FSL)! Besides signing, making facial expressions is an important part of FSL as the Deaf encourage expressing one’s self. FSL is a visual language rooted in Filipino culture and can be used by the Deaf and hearing alike to communicate with one another. </p>
+    </div>
+    </div>
 </div>
 
 @endsection
